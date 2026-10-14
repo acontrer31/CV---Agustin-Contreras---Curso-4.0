@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Manual NEXO · Alcover Automotores</title>
+<style>
+  @page { size: A4; margin: 20mm 17mm 20mm 17mm; }
+  :root { --ink:#1b2430; --muted:#5b6675; --acc:#6d4bd1; --acc2:#0f3d36; --gold:#c9a24b; --line:#dde2ea; --soft:#f4f2fb; }
+  * { box-sizing: border-box; }
+  body { font-family: "Helvetica Neue", Arial, "Liberation Sans", sans-serif; color: var(--ink); font-size: 10.4pt; line-height: 1.5; margin: 0; }
+  h1 { font-size: 22pt; color: var(--acc2); margin: 0 0 6mm; padding-bottom: 3mm; border-bottom: 3px solid var(--gold); page-break-before: always; }
+  h1.sin-salto { page-break-before: avoid; }
+  h2 { font-size: 14.5pt; color: var(--acc); margin: 8mm 0 2mm; page-break-after: avoid; }
+  h3 { font-size: 11.5pt; color: var(--acc2); margin: 5mm 0 1.5mm; page-break-after: avoid; }
+  p { margin: 1.5mm 0 2.5mm; }
+  ul, ol { margin: 1mm 0 3mm; padding-left: 6mm; }
+  li { margin: 0.8mm 0; }
+  table { width: 100%; border-collapse: collapse; margin: 2mm 0 4mm; font-size: 9.6pt; page-break-inside: auto; }
+  th { background: var(--acc2); color: #fff; text-align: left; padding: 1.6mm 2.4mm; font-weight: 600; }
+  td { border-bottom: 1px solid var(--line); padding: 1.6mm 2.4mm; vertical-align: top; }
+  tr { page-break-inside: avoid; }
+  td:first-child { font-weight: 600; white-space: nowrap; width: 34%; }
+  .tabla-ancha td:first-child { white-space: normal; }
+  .nota, .ojo, .admin { border-left: 4px solid var(--gold); background: #fbf7ea; padding: 2.4mm 3.5mm; margin: 3mm 0; border-radius: 0 3px 3px 0; page-break-inside: avoid; }
+  .ojo { border-color: #c86a6a; background: #fbeeee; }
+  .admin { border-color: var(--acc); background: var(--soft); }
+  .nota b.t, .ojo b.t, .admin b.t { display: block; margin-bottom: 0.5mm; }
+  .chip { display: inline-block; border-radius: 9px; padding: 0 2.4mm; font-size: 8.8pt; font-weight: 600; color: #fff; }
+  .rojo { background: #c86a6a; } .verde { background: #4f9d69; } .cel { background: #4aa3c7; } .amb { background: #e8a33d; } .gris { background: #8a93a0; }
+  kbd, .btn { display: inline-block; border: 1px solid #b9c0cc; border-bottom-width: 2px; border-radius: 4px; padding: 0 1.6mm; font-size: 9pt; background: #f7f8fa; font-family: inherit; font-weight: 600; white-space: nowrap; }
+  .portada { height: 245mm; display: flex; flex-direction: column; justify-content: center; page-break-after: always; }
+  .portada .marca { font-size: 54pt; font-weight: 800; letter-spacing: 6px; color: var(--acc2); line-height: 1; }
+  .portada .sub { font-size: 20pt; color: var(--acc); margin-top: 4mm; }
+  .portada .linea { width: 40mm; height: 4px; background: var(--gold); margin: 9mm 0; }
+  .portada p { color: var(--muted); font-size: 11.5pt; max-width: 135mm; }
+  .portada .pie { margin-top: 30mm; font-size: 9.5pt; color: var(--muted); }
+  .toc { columns: 1; }
+  .toc p { margin: 0.8mm 0; }
+  .toc .p1 { font-weight: 700; margin-top: 3mm; color: var(--acc2); }
+  .toc .p2 { padding-left: 6mm; }
+  .cols { display: flex; gap: 6mm; } .cols > div { flex: 1; }
+  .rol-e { color: #0b6b4a; font-weight: 700; } .rol-a { color: var(--acc); font-weight: 700; }
+</style>
+</head>
+<body>
+
+<div class="portada">
+  <div class="marca">NEXO</div>
+  <div class="sub">Manual de usuario · Alcover Automotores</div>
+  <div class="linea"></div>
+  <p><b>Para empleados y para administradores.</b> Qué se puede hacer en cada módulo del sistema, qué hace cada botón y cuándo conviene usarlo.</p>
+  <p>Edición para <b>Alcover Automotores</b>: incluye solo los módulos que tiene Alcover y cómo se reparten entre empleados y administradores. Se entra por <b>jarvis-acv.vercel.app/e/alcover</b>.</p>
+  <div class="pie">Versión del 14 de octubre de 2026 · Los nombres de los botones están tal cual aparecen en pantalla.</div>
+</div>
+
+<h1 class="sin-salto">Índice</h1>
+<div class="toc">
+  <p class="p1">1. Antes de empezar</p>
+  <p class="p2">Qué es NEXO · Empleado y administrador · Entrar · Verificación en dos pasos · Instalar la app</p>
+  <p class="p1">2. La pantalla principal</p>
+  <p class="p2">Barra lateral · Barra de arriba · Números del negocio · NEXO (el núcleo) · Para hoy · Mejores vendedores · Últimos movimientos</p>
+  <p class="p1">3. El menú de tu cuenta</p>
+  <p class="p1">4. Módulos de uso diario (empleado y administrador)</p>
+  <p class="p2">Vehículos · Financiación · Clientes · CRM · Tareas · Operaciones · Redes / Publicar · Grupos y Marketplace · Marketing · Conocimiento · Voz · Ventas</p>
+  <p class="p1">5. Dinero y números (solo administradores en Alcover)</p>
+  <p class="p2">Caja · Compras · Reportes · Facturación y gastos</p>
+  <p class="p1">6. Manual del administrador</p>
+  <p class="p2">Administración (usuarios, permisos, baja, "Ver como") · Seguridad (auditoría, accesos, NEXO por voz) · Automatización · Costo interno · Etapas del CRM</p>
+  <p class="p1">7. Hablar con NEXO (voz)</p>
+  <p class="p2">Cómo activarlo · Lista de lo que se puede pedir</p>
+  <p class="p1">8. Quién ve qué (tabla de permisos)</p>
+  <p class="p1">9. Novedades de octubre de 2026</p>
+  <p class="p1">10. Problemas frecuentes y glosario</p>
+</div>
+
+<!-- ===================================================== 1 -->
+<h1>1. Antes de empezar</h1>
+
+<h2>Qué es NEXO</h2>
+<p>NEXO es el sistema de gestión de la empresa: ahí viven el stock de autos, los clientes, las ventas, la caja, las tareas y las publicaciones en redes. Todo lo que se carga queda guardado en la nube, así que se ve igual desde la computadora, el celular o la app instalada. Además tiene un asistente por voz, también llamado NEXO, al que se le puede hablar.</p>
+<p>Cada empresa ve <b>solo sus propios datos</b>. Una agencia no puede ver lo de otra, aunque use el mismo sistema.</p>
+
+<h2>Empleado y administrador</h2>
+<table class="tabla-ancha">
+  <tr><th>Rol</th><th>Qué puede hacer</th></tr>
+  <tr><td><span class="rol-e">Empleado</span> (vendedor)</td><td>Usa los módulos que su administrador le habilitó. Carga y corrige vehículos, clientes, tareas, operaciones y publicaciones. En Alcover <b>nunca</b> ve Caja, Compras, Reportes, Facturación, Administración ni Seguridad (son solo de administradores, aunque tenga «todos los módulos»). No ve los costos internos ni la auditoría, y no puede crear usuarios ni encender o apagar automatizaciones. Tiene los botones de sol y luna para pasar de modo día a modo noche.</td></tr>
+  <tr><td><span class="rol-a">Administrador</span></td><td>Ve todos los módulos de su empresa. Además ve el <b>costo interno</b> de los autos, el <b>registro de auditoría</b>, crea usuarios, les asigna rol y permisos, los da de baja, puede entrar con «Ver como», enciende y apaga las automatizaciones, edita las etapas del CRM y activa o apaga la voz de NEXO para toda la empresa.</td></tr>
+</table>
+<div class="nota"><b class="t">Cómo se reconoce en este manual</b>Los recuadros violetas con la etiqueta <b>Solo administradores</b> explican lo que un empleado no ve. Lo demás es para los dos.</div>
+<p>Aunque un módulo esté oculto en pantalla, <b>la seguridad no depende de eso</b>: la base de datos también frena a quien no tiene permiso (por ejemplo, un vendedor sin permiso de Caja no puede leer los movimientos de caja por ningún camino, ni siquiera hablándole a NEXO).</p>
+
+<h2>Entrar</h2>
+<ol>
+  <li>Abrí <b>https://jarvis-acv.vercel.app/e/alcover</b> (la pantalla de ingreso con la marca de Alcover). Es la única dirección de NEXO: la versión vieja ya no está publicada.</li>
+  <li>Escribí tu <b>email</b> y tu <b>contraseña</b>. El ojito de la contraseña sirve para verla mientras la escribís.</li>
+  <li>Si te olvidaste la contraseña, usá la opción de recuperarla: te llega un correo con un enlace para poner una nueva.</li>
+  <li>Si es tu primer ingreso o un administrador te dio una clave temporal, el sistema te pide <b>cambiarla</b> antes de seguir, y a veces aceptar el <b>aviso de privacidad</b> interno para empleados.</li>
+</ol>
+<h3>Cómo tiene que ser la contraseña</h3>
+<p>Desde el 14 de octubre de 2026, toda contraseña <b>nueva o cambiada</b> tiene que tener:</p>
+<ul>
+  <li>Entre <b>8 y 16 caracteres</b>.</li>
+  <li>Al menos una <b>minúscula</b>, una <b>MAYÚSCULA</b> y un <b>número</b>.</li>
+  <li>Al menos un <b>símbolo</b>: <kbd>! @ # $ % &amp; * . - _</kbd> u otro de la misma familia. Los espacios, la «ñ» y las letras con tilde <b>no</b> cuentan como símbolo.</li>
+</ul>
+<p>Ejemplo válido: <b>Auto2026!</b>. Si falta algo, NEXO te dice exactamente qué («Le falta al menos una letra mayúscula»). Las contraseñas que ya tenías <b>siguen funcionando</b>: la regla vale solo cuando creás o cambiás una.</p>
+
+<h2>Verificación en dos pasos (código de 6 números)</h2>
+<p>Es una capa extra de seguridad: además de la contraseña, entrás con un código que te muestra una app en tu teléfono. Es <b>obligatoria para los administradores</b> y recomendada para los empleados.</p>
+<ol>
+  <li>Abrí el menú de tu cuenta (abajo a la izquierda) y tocá <b>Verificación en dos pasos</b>.</li>
+  <li>En tu teléfono abrí una app de verificación (Google Authenticator, Authy, etc.) y elegí «agregar cuenta».</li>
+  <li>Escaneá el <b>código QR</b>. Si no podés, usá <b>No puedo escanearlo / guardar la clave de respaldo</b> y escribí esa clave en la app o guardala en tu gestor de contraseñas.</li>
+  <li>Escribí el <b>código de 6 números</b> y confirmá. Desde ese momento entrás con contraseña + código.</li>
+</ol>
+<p>Para sacarla: mismo menú, botón <b>Desactivar</b>. Es mucho menos seguro; hacelo solo si es necesario.</p>
+
+<h2>Instalar NEXO como aplicación</h2>
+<p>En el menú de la cuenta aparece <b>Instalar NEXO en esta PC</b> (o la opción del navegador en el celular: «Agregar a la pantalla de inicio»). NEXO queda con su ícono y en su propia ventana, como cualquier app.</p>
+
+<!-- ===================================================== 2 -->
+<h1>2. La pantalla principal</h1>
+<p>Es lo primero que ves al entrar. Está pensada para saber en un vistazo cómo viene el día. Se compone de una barra lateral, una barra de arriba y el contenido.</p>
+
+<h2>La barra lateral (los módulos)</h2>
+<ul>
+  <li><b>Logo y nombre de la empresa</b> arriba.</li>
+  <li><b>Botón de barra</b> (solo en la computadora): pliega la barra para que muestre solo íconos; al pasar el mouse sobre cada ícono aparece su nombre. Queda recordado en ese navegador. En el celular, la barra es un cajón: se abre con el botón de menú (tres rayas) de arriba y se cierra tocando afuera o con el ✕.</li>
+  <li><b>Inicio</b>: vuelve a la pantalla principal.</li>
+  <li><b>Tienda</b> (si la empresa la tiene): abre la tienda pública en otra pestaña.</li>
+  <li><b>Módulos agrupados</b> (Principal, Gestión, Administración, Marketing, Sistema…). Cada persona ve solo los grupos y módulos que le corresponden. Un módulo abierto se marca resaltado.</li>
+  <li><b>Tu cuenta</b> al pie: tu foto o iniciales, tu nombre y rol. Abre el menú de cuenta (capítulo 3).</li>
+</ul>
+<p>Al abrir un módulo, se muestra en el área de contenido con la barra lateral siempre a la vista. Se cierra con su <kbd>✕</kbd> o con la tecla <kbd>Esc</kbd> (si hay una ficha o foto abierta encima, <kbd>Esc</kbd> cierra primero eso). La pantalla principal sigue detrás y, al volver, se actualiza sola.</p>
+
+<h2>La barra de arriba</h2>
+<table class="tabla-ancha">
+  <tr><th>Elemento</th><th>Qué hace</th></tr>
+  <tr><td>Buscador «Ir a un módulo…»</td><td>Escribí una palabra («caja», «factura», «cliente») y elegí el módulo de la lista; con <kbd>Enter</kbd> abre el primero. <kbd>Esc</kbd> borra lo escrito.</td></tr>
+  <tr><td>Música (⏮ ⏯ ⏭ y la nota ♪)</td><td>Controla Spotify: canción anterior, pausa/reproducir y siguiente. La nota abre el panel para elegir qué escuchar (canción, artista, playlist o disco), ver el avance y subir o bajar el <b>Volumen</b>. Si no conectaste Spotify, el panel te ofrece <b>Conectar Spotify</b> (requiere cuenta Premium). También se maneja por voz: «poné música de AC/DC», «pausá la música», «siguiente canción».</td></tr>
+  <tr><td>☀ y 🌙 (modo día / noche)</td><td><b>Solo los usuarios que no son administradores</b> los ven. Cambian el aspecto de NEXO entre claro y oscuro; queda guardado en ese navegador.</td></tr>
+  <tr><td>Reloj y clima</td><td>Hora y temperatura de Salta. La hora se actualiza cada segundo y el clima cada 15 minutos.</td></tr>
+  <tr><td>Hablar con NEXO</td><td>Activa el asistente por voz (hay que dar permiso al micrófono la primera vez). Mientras habla dice <b>Cortar la charla</b>. Si no aparece, la voz está apagada para tu empresa (ver capítulo 7).</td></tr>
+</table>
+
+<h2>Los números del negocio</h2>
+<p>Una fila de tarjetas arriba muestra los datos clave (por ejemplo vehículos disponibles, tareas, caja…). <b>Tocar una tarjeta abre su módulo.</b> Se vuelven a leer cada vez que cerrás un módulo, para que lo que acabás de cargar se vea enseguida. Una tarjeta aparece solo si tenés permiso para ese módulo.</p>
+
+<h2>NEXO, el núcleo</h2>
+<p>El círculo animado del centro es el asistente. <b>Tocarlo equivale a «Hablar con NEXO»</b>. Muestra su estado: <b>STANDBY</b> (esperando), <b>ESCUCHANDO</b>, <b>ACTIVANDO</b>, <b>RESPONDIENDO</b> o <b>ERROR</b>. Debajo dice cómo activarlo según tus ajustes: «Tocá el núcleo para hablar», «Decí “Hola NEXO” o tocá el núcleo» o «Aplaudí dos veces o tocá el núcleo». Mientras conversa, una ventana muestra qué consulta y qué cambia (se puede apagar en Seguridad → NEXO por voz).</p>
+
+<h2>Para hoy</h2>
+<p>Lo que falta hacer: <b>seguimientos de clientes vencidos y de hoy</b> y <b>tareas pendientes</b>. Las tareas ya hechas y las vencidas viejas <b>no</b> se muestran acá (siguen en el módulo Tareas). Se actualiza sola cada dos minutos, al volver a la pestaña y cuando cambia una tarea. Si no hay nada: «Nada pendiente para hoy. Todo al día.»</p>
+
+<h2>Mejores vendedores del mes</h2>
+<p>Los tres vendedores que más vendieron en el mes (en plata, sobre las operaciones <i>entregadas</i>), con la cantidad de ventas de cada uno. Es solo informativo. El botón <b>Ver reportes</b> abre el módulo Reportes.</p>
+
+<h2>Últimos movimientos del stock</h2>
+<p>Tabla con los autos tocados hace poco (en una imprenta, las facturas por cobrar). Columnas: <b>Auto, Patente, Estado, Precio final, Con transferencia, Anticipo, Días consignado</b>.</p>
+<ul>
+  <li><b>Buscar</b> por nombre, patente o estado: busca en <i>todo</i> el stock, no solo en los diez últimos.</li>
+  <li><b>Ordenar los autos</b>: por nombre (A→Z, Z→A) o por última vez que entró o se tocó.</li>
+  <li><b>El ojito</b> de «Con transferencia» oculta o muestra esa columna (queda recordado). «Con transferencia» es el precio final más el 2,5 % del valor tabla DNRPA, el presupuesto del registro y la gestoría; si falta el valor tabla, dice «Falta valor tabla».</li>
+  <li><b>Días consignado</b>: cuántos días lleva en la agencia un auto en consignación.</li>
+  <li><b>Abrir Vehículos</b> lleva al módulo completo.</li>
+</ul>
+
+<!-- ===================================================== 3 -->
+<h1>3. El menú de tu cuenta</h1>
+<p>Abajo a la izquierda, tocando tu nombre. Es el mismo en todos los módulos.</p>
+<table class="tabla-ancha">
+  <tr><th>Opción</th><th>Para qué sirve</th></tr>
+  <tr><td>Tu foto / iniciales</td><td>Podés cargar una foto tuya (solo la ves vos y se usa en tu cuenta). <b>Quitar foto</b> la saca, previa confirmación.</td></tr>
+  <tr><td>Cambiar contraseña</td><td>Escribís la <b>Contraseña nueva</b> (con minúscula, mayúscula, número y símbolo; ver capítulo 1) y confirmás. Aparece «Contraseña actualizada ✓».</td></tr>
+  <tr><td>Voz de NEXO</td><td>Prende o apaga la voz. <b>Solo la puede cambiar un administrador</b> y vale para toda la empresa; a los demás les dice «Solo para vos» o que está apagada.</td></tr>
+  <tr><td>Verificación en dos pasos</td><td>Activar o desactivar el código de 6 números (ver capítulo 1).</td></tr>
+  <tr><td>Instalar NEXO en esta PC</td><td>Instala la app con su ícono propio.</td></tr>
+  <tr><td>Cerrar sesión</td><td>Sale de NEXO. Pide confirmación y va separada del resto para no tocarla por error.</td></tr>
+</table>
+
+<!-- ===================================================== 4 -->
+<h1>4. Módulos de uso diario</h1>
+<p>Los siguientes módulos están pensados para el trabajo de todos los días. Un empleado ve los que su administrador le habilitó; el administrador ve todos.</p>
+
+<!-- VEHICULOS -->
+<h2>4.1 Vehículos</h2>
+<p>El stock real de la agencia: cada auto con sus datos, fotos, estado, precio, anticipo y documentación. Es el módulo central.</p>
+
+<h3>La lista</h3>
+<p>Una tabla ordenada en columnas: <b>Vehículo, Km, Condición, Patente, Estado, Precio, Anticipo, Acciones</b>. Con muchos autos se divide en páginas.</p>
+<table class="tabla-ancha">
+  <tr><th>Control</th><th>Qué hace</th></tr>
+  <tr><td>Nuevo vehículo</td><td>Abre el formulario para cargar un auto (ver más abajo).</td></tr>
+  <tr><td>Cargar desde Excel</td><td>Importa muchos autos de una planilla Excel o CSV. Antes de cargar muestra qué columnas se reconocieron (Marca y Modelo obligatorias; Versión, Año, Km, Patente, Precio, Moneda, Anticipo, Condición y Notas), cuántas filas entran y cuáles no y por qué (<i>Ver las que no entran</i>). Lo que ya está cargado no se repite.</td></tr>
+  <tr><td>Planilla del sitio</td><td>Muestra cómo está la planilla de la web de la agencia frente a NEXO: <i>qué se cargaría nuevo, qué se actualiza, qué ya no está</i>. <b>Traer los cambios</b> los aplica. NEXO solo <b>lee</b> la planilla, nunca escribe en ella, y además se sincroniza sola cada 15 minutos. La planilla aporta fotos y anticipo; los precios quedan los de NEXO salvo que haya una Lista de precios activa.</td></tr>
+  <tr><td>Buscar marca, modelo o dominio…</td><td>Filtra la lista mientras escribís.</td></tr>
+  <tr><td>Filtros y orden</td><td>Abre una ventana centrada con: <b>filtro por estado</b> (con la cantidad de autos de cada uno), <b>orden</b> (Últimos editados, Último cargado, Alfabético A–Z, Precio de mayor a menor) y <b>Mostrar por página</b>. <b>Cerrar ✕</b> o tocar afuera la cierra. «Mostrar/Ocultar filtros» alterna el panel.</td></tr>
+  <tr><td>Páginas ‹ ›</td><td>Página anterior / siguiente.</td></tr>
+</table>
+
+<div class="nota"><b class="t">De dónde salen los datos de los autos en Alcover</b>NEXO lee solo (cada 15 minutos) dos archivos de la agencia, <b>sin escribir nunca en ellos</b>:
+<ul style="margin:1mm 0 0">
+<li><b>Lista de precios</b> (el Excel de octubre): manda en <b>precio y moneda</b> mientras la celda tenga valor, y completa <b>vendedor que lo ingresó</b>, <b>motor, caja, tracción</b>, <b>condición</b> (consignación o agencia), <b>transferencia</b> y el <b>dato de la consignación</b> (solo administradores). La patente, el año y los km los completa solo si en NEXO están vacíos. <b>Hoy la Lista no cambia el estado de los autos</b>: eso se maneja en NEXO.</li>
+<li><b>Planilla del sitio web</b>: de ahí salen solo las <b>fotos</b> y el <b>anticipo</b>.</li>
+</ul>
+Si cambiás a mano un precio que la Lista tiene cargado, en la próxima pasada vuelve el de la Lista: el precio se corrige en la Lista. Un auto que está en la Lista y no en NEXO aparece como aviso para cargarlo.</div>
+<h3>Colores del estado</h3>
+<p>Cada auto tiene un estado que se elige en el desplegable de la propia fila (cambia al instante; se revierte si el sistema lo rechaza):</p>
+<table class="tabla-ancha">
+  <tr><td><span class="chip verde">Disponible</span></td><td>A la venta y en la agencia.</td></tr>
+  <tr><td><span class="chip cel">A la venta · fuera de agencia</span></td><td>Sigue a la venta pero el auto no está físicamente en la agencia. Es una marca aparte: el estado sigue siendo disponible.</td></tr>
+  <tr><td><span class="chip amb">Reservado</span></td><td>Tiene seña o reserva.</td></tr>
+  <tr><td><span class="chip rojo">Vendido</span> / <span class="chip rojo">No disponible</span></td><td>Vendido o retirado. Al pasarlo a <b>Vendido</b>, NEXO retira sus publicaciones de las redes y avisa qué grupos de Facebook hay que limpiar a mano.</td></tr>
+  <tr><td><span class="chip gris">Borrador</span></td><td>Cargado pero todavía no publicado en el stock.</td></tr>
+</table>
+
+<h3>Acciones de cada fila</h3>
+<ul>
+  <li><b>Clic en el auto</b>: abre la <b>ficha</b> de solo lectura (ver abajo).</li>
+  <li><b>Editar</b>: abre el formulario para corregir.</li>
+  <li><b>Devolver al dueño</b>: aparece en <b>todos los autos en consignación que están dentro de la agencia</b>. El dueño se lleva el auto: sale del stock y queda anotada la fecha y quién lo entregó. Pide confirmación.</li>
+  <li><b>Volvió a la agencia</b>: reemplaza al botón anterior en un auto ya devuelto; lo deshace (vuelve disponible y borra la devolución).</li>
+  <li><b>✕ (Eliminar)</b>: borra el auto con sus fotos y checklist. <span class="ojo" style="display:inline;padding:0 2mm">No se puede deshacer.</span> Pide confirmación.</li>
+</ul>
+<div class="nota"><b class="t">Antes de eliminar</b>Si el auto se vendió o salió del stock, casi siempre conviene cambiarle el estado en lugar de borrarlo: así queda el historial.</div>
+
+<h3>Cargar o editar un vehículo</h3>
+<p>El formulario pide (los marcados * son obligatorios):</p>
+<table class="tabla-ancha">
+  <tr><th>Campo</th><th>Detalle</th></tr>
+  <tr><td>Marca * y Modelo *</td><td>Obligatorios. Más <b>Versión</b>, <b>Año</b> y <b>Km</b> (0 km = auto nuevo; vacío = sin dato).</td></tr>
+  <tr><td>Color, Carrocería</td><td>Texto libre y lista (Pickup, SUV, Sedán, Hatch…; «Sin especificar»).</td></tr>
+  <tr><td>Caja y Tracción</td><td>Manual / automática; 4x2 / 4x4.</td></tr>
+  <tr><td>Patente (dominio)</td><td>Hace falta para consultar el valor en el registro.</td></tr>
+  <tr><td>Condición</td><td>Propio, consignación, permuta, parte de pago… («Sin definir» si falta). Si es permuta o parte de pago aparece <b>Precio de toma</b> («A cuánto lo toma la agencia»); si deja de serlo, ese precio se borra.</td></tr>
+  <tr><td>Estado</td><td>Ver colores arriba.</td></tr>
+  <tr><td>Auto fuera de la agencia pero sigue a la venta</td><td>Casilla bajo Dominio. Al tildarla el auto queda disponible y se ve en celeste. No aparece en autos vendidos.</td></tr>
+  <tr><td>Precio de venta y Moneda del precio</td><td>Pesos o dólares. Si la planilla o la Lista de precios tiene precio, ese manda y el campo avisa «Viene de la planilla del sitio».</td></tr>
+  <tr><td>Anticipo para retirarlo</td><td>Cuánto hay que dar para llevárselo. También puede venir de la planilla.</td></tr>
+  <tr><td>Costo interno</td><td><span class="rol-a">Solo administradores.</span> Vive en otra tabla con su propio permiso.</td></tr>
+  <tr><td>Valor tabla DNRPA</td><td>Para estimar la transferencia. Se puede escribir o pegar el resultado del <b>Estimador de Costos del registro</b> con <b>Pegar del registro</b> → <b>Leer y guardar</b>: NEXO busca el renglón «Valor Tabla»; si no lo encuentra, te lo dice y no toca el campo.</td></tr>
+  <tr><td>Equipamiento</td><td>Uno por línea.</td></tr>
+  <tr><td>Notas internas</td><td>No se publican.</td></tr>
+  <tr><td>Destacado, 0 km</td><td>Marcas para resaltar o indicar auto nuevo.</td></tr>
+  <tr><td>Fotos</td><td>En un <b>auto nuevo</b> podés elegir fotos antes de guardar: <b>+ Desde la galería</b> (varias a la vez) o <b>Sacar foto</b> con la cámara del celular (hasta 30); se suben solas al guardar. En un auto ya cargado se administran desde la galería de la ficha (subir y borrar).</td></tr>
+</table>
+<p>Al guardar, <b>Cargar</b> (alta) o <b>Guardar</b> (cambios) piden confirmación y el cambio queda registrado en la auditoría con lo que había antes y lo que quedó. <b>Cancelar</b> cierra sin guardar.</p>
+
+<h3>La ficha del vehículo</h3>
+<p>Se abre al tocar un auto. Muestra las fotos (tocá una para verla grande), todos los datos y, según corresponda: <b>Con transferencia</b> (precio final más 2,5 % del valor tabla + presupuesto DNRPA + gestoría), <b>Anticipo para retirarlo</b>, <b>Valor tabla DNRPA</b>, <b>Ingresó (Lista de precios)</b>, <b>Transferencia (Lista de precios)</b>, <b>Costo interno</b> (solo administradores), <b>Dato de la consignación</b> (solo administradores), Equipamiento y Notas internas. Botones: <b>Editar</b> y <b>Cerrar</b>.</p>
+
+<h3>Documentación y accesorios (checklist)</h3>
+<p>En la ficha del auto: sirve sobre todo para dejar constancia de lo que entregó el dueño al dejar un auto en consignación.</p>
+<ul>
+  <li><b>Papeles:</b> Título, Libre deuda municipal, Formulario 08, Formulario 12 (verificación policial), Revisación Técnica Vehicular (RTV), Seguro.</li>
+  <li><b>Accesorios:</b> Gato, Auxilio, Llave cruz, Duplicado de llave, Balizas, Matafuego, Kit de seguridad.</li>
+  <li><b>Requiere informe de dominio (DNRPA):</b> al tildarlo se pueden anotar la <i>Fecha del pedido</i>, el <i>DNI del consignante</i> y el <i>Resultado</i> (libre, con embargo, secuestro…). Los enlaces <b>Pedir informe de dominio ↗</b> y <b>Pedir informe histórico ↗</b> llevan al trámite oficial (se paga y se pide en el sitio del registro con CUIL/CUIT y la patente; NEXO no lo puede consultar automáticamente).</li>
+  <li><b>Auto fuera de la agencia pero sigue a la venta:</b> la misma marca del formulario, acá se guarda de inmediato (con confirmación).</li>
+  <li><b>Notas</b> (faltantes, observaciones) y <b>Guardar checklist</b>. Aparece «Guardado ✓». Los tildes sueltos no preguntan; el guardado final sí.</li>
+</ul>
+
+<!-- FINANCIACION -->
+<h2>4.2 Financiación</h2>
+<p>Para cotizar un auto con el cliente: cuánto sale la transferencia y cómo queda la cuenta con anticipo, permuta y cuotas. Todo es <b>orientativo</b>, no una oferta: la cuota real y la tasa las da la entidad financiera (hoy MG Group) y NEXO no las inventa.</p>
+<ol>
+  <li><b>Elegí un vehículo del stock</b> en el desplegable. Se muestra su ficha (precio de venta, anticipo, disponibilidad).</li>
+  <li><b>Patente</b>: el botón <b>Copiar la patente</b> deja el dominio listo para pegarlo en la consulta del registro (DNRPA); <b>abrir la consulta ↗</b> la abre. Si el auto no tiene patente, hay que cargarla en Vehículos.</li>
+  <li><b>Valor Tabla</b> y <b>Total presupuesto</b>: se cargan a mano con lo que muestra el registro (es un formulario, no una API). Si no lo cargás, NEXO estima el total siguiendo el Valor Tabla y lo muestra en cursiva; apenas escribís el del registro, ese pasa a mandar. Lo que escribís acá vale para esta cotización; para dejarlo cargado en el auto, editá el vehículo.</li>
+  <li><b>Valor final de la operación:</b> <i>Ajuste %</i>, <i>Gestoría</i> (se cobra una sola vez), <i>Total presupuesto DNRPA</i> y <b>Transferencia</b>. Si falta el Valor Tabla avisa que no puede calcular.</li>
+  <li><b>Simulación de cuotas:</b> <i>Anticipo del cliente</i>, <i>Permuta (opcional)</i> con el <i>Valor de su auto</i>. Si anticipo + permuta superan el precio avisa que no queda nada por financiar. <b>Comparar plazos</b> muestra la cuenta sin interés en distintos plazos («/ mes»).</li>
+  <li><b>Prenda:</b> ingresá el <i>Valor cuota</i> y los <i>Meses</i> que informó MG Group para ver el <b>Costo de la prenda</b> y el <b>TOTAL OPERACIÓN</b>.</li>
+</ol>
+<div class="nota"><b class="t">Importante</b>Cambiar de auto limpia lo que copiaste del registro, porque esos números son de <i>ese</i> dominio. Así no se cotiza un auto con el presupuesto de otro. El resultado es «orientativo para la operación, no un contrato».</div>
+
+<!-- CLIENTES -->
+<h2>4.3 Clientes</h2>
+<p>La libreta de clientes y leads con su historial. La ficha se adapta al rubro: en una agencia incluye vehículos de interés, presupuesto y vendedor asignado.</p>
+<table class="tabla-ancha">
+  <tr><th>Control</th><th>Qué hace</th></tr>
+  <tr><td>Nuevo cliente</td><td>Abre el formulario de alta.</td></tr>
+  <tr><td>Buscar nombre, teléfono o email…</td><td>Filtra la lista.</td></tr>
+  <tr><td>Todas las etapas</td><td>Filtra por etapa del lead: <i>Nuevo, Contactado, En negociación, Ganado, Perdido</i>.</td></tr>
+  <tr><td>Selector de etapa de cada fila</td><td>Cambia la etapa del cliente al instante (con color: ámbar para contactado/negociación, verde para ganado).</td></tr>
+  <tr><td>«faltan datos»</td><td>Marca a los clientes con teléfono, email o domicilio incompletos.</td></tr>
+  <tr><td>Editar / ✕</td><td>Corrige la ficha o elimina al cliente (también borra todo su historial de contactos; no se puede deshacer).</td></tr>
+  <tr><td>Clic en el cliente</td><td>Abre su perfil.</td></tr>
+</table>
+<h3>El formulario</h3>
+<p>Nombre (obligatorio), teléfono, email, domicilio, <b>Vehículos de interés</b> (uno o varios: «Agregar otro vehículo…», con ✕ para quitar), presupuesto, etapa, <b>Vendedor asignado</b> («Sin asignar»), notas y la casilla <i>«El cliente fue informado de la política de privacidad y aceptó que sus datos se guarden»</i>. Si falta teléfono, email o domicilio, NEXO <b>no frena</b>: pregunta si querés <b>Guardar igual</b> (queda marcado como incompleto) o <b>Volver a completar</b>.</p>
+<h3>El perfil del cliente</h3>
+<p>Datos de la ficha (<b>Editar datos</b>), notas, <b>historial de contacto</b> (llamadas, mensajes, visitas) con una alta rápida de una interacción («Qué pasó…») y las <b>operaciones</b> del cliente.</p>
+
+<!-- CRM -->
+<h2>4.4 CRM</h2>
+<p>El embudo de ventas: dónde está cada lead y cuándo hay que volver a hablarle.</p>
+<ul>
+  <li>Arriba, las <b>etapas</b> en fila (en Alcover es un recorrido propio de etapas; en otras empresas es el embudo clásico). Al elegir una etapa se listan abajo sus leads.</li>
+  <li>En cada lead: <b>Mover a… / Etapa</b> (lo pasa a otra etapa), <b>Vendedor</b> (asignarlo) y <b>Próximo contacto</b> (fecha del seguimiento). Un seguimiento con fecha de hoy o vencida aparece en <b>Para hoy</b> de la pantalla principal.</li>
+  <li>«No hay leads en esta etapa» si está vacía.</li>
+</ul>
+<div class="admin"><b class="t">Solo administradores · Etapas del recorrido</b>El editor de etapas permite <b>agregar</b> una etapa nueva, <b>renombrar</b>, <b>Subir</b>/<b>Bajar</b> para reordenar y <b>Archivar</b>. Una etapa con leads adentro no se puede archivar.</div>
+
+<!-- TAREAS -->
+<h2>4.5 Tareas</h2>
+<p>Tus tareas del día: pendientes y hechas. También se manejan por voz («Anotá para mañana: llamar al gestor»).</p>
+<ul>
+  <li><b>Nueva tarea…</b> más una <b>fecha de vencimiento</b> (por defecto hoy; se puede dejar sin fecha). Pide confirmación para agregar.</li>
+  <li><b>Marcar como realizada</b> (el tilde de la izquierda): la tarea pasa al historial al instante, sin preguntar. Si fue sin querer, aparece un aviso con <b>Deshacer</b> unos segundos, y desde el historial se devuelve con <b>Volver a pendiente</b>.</li>
+  <li><b>Corregir</b> (o doble clic sobre el texto): se edita en la misma línea.</li>
+  <li><b>Borrar</b> (con confirmación).</li>
+  <li><b>Historial:</b> todo lo realizado, con día y hora; muestra las últimas y el resto con «Ver todas». Las que el sistema cerró solas dicen «Cerrada sola (ya no aplicaba)».</li>
+</ul>
+
+<!-- OPERACIONES -->
+<h2>4.6 Operaciones</h2>
+<p>Registra las ventas y trámites cruzando tres datos: <b>el vehículo, el cliente y el dinero</b>. Es lo que alimenta los Reportes y el podio de vendedores.</p>
+<table class="tabla-ancha">
+  <tr><th>Campo / botón</th><th>Detalle</th></tr>
+  <tr><td>Tipo</td><td>Venta, Reserva, Permuta o Consignación.</td></tr>
+  <tr><td>Vehículo, Cliente, Vendedor</td><td>Se eligen de las listas del sistema.</td></tr>
+  <tr><td>Forma de pago</td><td>Contado, Financiado, Permuta o Mixto.</td></tr>
+  <tr><td>Monto, Seña, Comisión</td><td>El monto debe ser mayor que cero y la seña no puede superarlo.</td></tr>
+  <tr><td>Notas (opcional)</td><td>Detalle libre.</td></tr>
+  <tr><td>Registrar operación</td><td>Guarda (con confirmación) y deja constancia en la auditoría.</td></tr>
+  <tr><td>Estado de la operación</td><td>Abierta → <b>Señada</b> → <b>Entregada</b> o <b>Cancelada</b>. Al marcar <b>Entregada</b> la operación queda cerrada, <b>el vehículo pasa a vendido y se retira de las redes</b>.</td></tr>
+  <tr><td>Sumar seña</td><td>Agrega un <i>Importe a sumar a la seña</i> a una operación existente (botón <b>Sumar</b>).</td></tr>
+  <tr><td>Corregir operación</td><td>Edita una ya registrada; <b>Guardar corrección</b> guarda lo que decía antes en la auditoría.</td></tr>
+  <tr><td>Borrar operación</td><td>Con confirmación; no se puede deshacer.</td></tr>
+</table>
+<p>Las operaciones entregadas y canceladas van a «Cerradas», plegadas al final de la lista.</p>
+
+<!-- REDES -->
+<h2>4.7 Publicar (Redes)</h2>
+<p>«Publicar» agrupa dos pestañas: <b>Página, Instagram y TikTok</b> y <b>Grupos y Marketplace</b>. Quien tiene permiso de una sola ve solo esa pestaña. «Dónde publicar» elige entre ellas.</p>
+<h3>Página, Instagram y TikTok</h3>
+<p>Publica en las cuentas reales de Facebook e Instagram de la empresa. <span class="ojo" style="display:inline;padding:0 2mm">Todo lo publicado sale en la cuenta real:</span> por eso siempre pide confirmación («Sale publicado en la cuenta real de la empresa» → <b>Publicar</b>).</p>
+<ol>
+  <li>Elegí la <b>red</b> (Facebook, Instagram, TikTok) y el <b>formato</b> (posteo, carrusel, Reel, historia…). En TikTok un «reel» es un video y «carrusel» una publicación de fotos.</li>
+  <li>Elegí <b>qué publicar</b>: un auto del stock (con fotos) o texto libre. Al elegir un auto se arman solos el texto y las fotos; <b>Volver a armar el texto con los datos del auto</b> lo regenera. Las fotos se tildan en el orden en que se quieren ver (el número sobre la foto lo marca); <b>Sumar al carrusel</b> / <b>Sumar como historia</b>.</li>
+  <li>Escribí o <b>dictá</b> el texto (el micrófono escribe mientras hablás; decí «punto», «coma» o «nueva línea»). Hay una <b>Vista previa</b>.</li>
+  <li>Para Reels e historias en video: <b>Subir un video desde tu computadora</b> o pegar su URL pública.</li>
+  <li><b>Programar para:</b> dejá vacío para publicar ahora, o elegí <b>Fecha y hora de publicación</b>. «Y también» agrega más días y horarios de la misma publicación (una repetición por cada uno; se pueden quitar). Si la fecha ya pasó, avisa.</li>
+  <li>Las historias de Instagram: se arman y se dejan listas para publicarlas desde la app de Instagram, donde se les puede poner música.</li>
+</ol>
+<p>Más cosas de esta pantalla:</p>
+<ul>
+  <li><b>Agendadas</b>: lista de lo programado, cada una con <b>Cancelar la publicación</b>.</li>
+  <li><b>TikTok es asistido</b>: NEXO copia el texto y prepara el video o las fotos, pero lo publicás vos desde la app. Después tocás <b>Ya lo publiqué</b> (podés pegar el enlace). Cuando el auto se vende, aparece arriba para borrarlo a mano.</li>
+  <li><b>Autos vendidos: avisos para borrar</b>. Instagram y TikTok no se borran por API: abrí el link, borrá la publicación en la app y tocá <b>Ya la borré</b>.</li>
+  <li><b>Plan de la semana</b>: <b>Armar plan</b> le pide a NEXO el plan de Instagram de los próximos 7 días con tu stock real que tiene fotos (opcional: <i>Enfoque</i>, por ejemplo «más 0 km»). <b>No publica nada</b>: cada día tiene <b>Preparar publicación</b>, que completa el formulario para que la revises y publiques o programes. El último plan queda guardado en ese navegador. Puede estar armado con reglas de NEXO (sin IA) o con IA; en ese caso revisá cada texto.</li>
+  <li><b>Mensajes</b>: bandeja de mensajes directos de Instagram y Messenger de la página conectada. Elegís la <b>Red</b>, tocás <b>Actualizar</b>, leés la charla y respondés sin salir de NEXO. Meta solo deja responder hasta 24 horas después del último mensaje de la persona.</li>
+</ul>
+
+<!-- DIFUSION -->
+<h3>Grupos y Marketplace</h3>
+<p>Facebook no deja que ningún programa publique en grupos ni en Marketplace. Por eso NEXO <b>arma un texto distinto para cada grupo</b> (con las reglas de cada uno) y las fotos, y vos los pegás y publicás con tu cuenta, a dos toques.</p>
+<ol>
+  <li><b>Qué querés publicar</b>: <i>Un vehículo del stock</i>, <i>Algo de lo que vendo</i> (módulo Ventas), un producto, u <i>Otra cosa (lo escribo yo)</i> con nombre, precio opcional y datos (NEXO no agrega nada que no escribas).</li>
+  <li>Cargá <b>Tu WhatsApp para que te escriban</b> y si los autos van con precio. Queda guardado para la próxima.</li>
+  <li>Tildá los <b>grupos</b>. Los que publicaste hace poco aparecen avisados («esperá unos días para no parecer spam»).</li>
+  <li><b>Armar los textos</b>: aparece un texto por grupo y uno para Marketplace.</li>
+  <li><b>Copiar y abrir el grupo</b> / <b>Copiar y abrir Marketplace</b>: copia el texto y abre el destino; ahí pegás y publicás. En Marketplace también te dice qué datos completar en su formulario.</li>
+  <li><b>Fotos para subir</b>: compartilas desde el celular o usá <b>Bajar todas</b> en la computadora.</li>
+  <li>Cuando publicaste, tocá <b>Ya lo publiqué</b> («Anotado ✓»).</li>
+</ol>
+<table class="tabla-ancha">
+  <tr><th>Sección</th><th>Para qué sirve</th></tr>
+  <tr><td>Para hoy</td><td>Lo que toca publicar hoy.</td></tr>
+  <tr><td>Programadas</td><td>Recordatorios: «Programar para otros días y horarios» deja lista la publicación a esa hora, con aviso por WhatsApp o en «Para hoy» y Tareas. Cada una tiene <b>Cancelar</b>.</td></tr>
+  <tr><td>Autos vendidos: sacá estos avisos</td><td>Dónde se publicó cada auto que ya se vendió. <b>Abrir el grupo ↗</b>, borrás tu publicación y tocás <b>Ya lo saqué</b> (o <b>Ya los saqué todos</b>).</td></tr>
+  <tr><td>Mis grupos</td><td>Tu lista de grupos: <b>Cargar mis grupos</b>, y por grupo <b>Nombre *</b>, <b>Link del grupo *</b> y las reglas (ej.: «precio en la primera línea, sin links, solo los lunes»). Cada grupo se puede <b>Abrir</b>, <b>Editar</b>, pausar o sacar.</td></tr>
+  <tr><td>Qué rindió</td><td>Cada vez que te escriben por una publicación, sumá un mensaje (<b>＋</b> / <b>−</b>). Así ves en qué grupo te escriben más.</td></tr>
+</table>
+
+<!-- MARKETING -->
+<h2>4.8 Marketing</h2>
+<p>El texto del aviso y qué rindió cada publicación.</p>
+<ul>
+  <li><b>Armar la pieza</b>: elegí un <b>Vehículo</b> y NEXO arma el <b>Texto de la pieza</b> con lo que tiene la ficha (lo que no está cargado, no se menciona; se firma con el nombre de la agencia). Copialo y pegalo en Redes, WhatsApp o donde necesites.</li>
+  <li><b>Historial de publicaciones</b>: cada publicación hecha desde Redes con su estado — <span class="chip verde">Viva</span>, <span class="chip gris">Retirada</span>, <span class="chip amb">Retirar a mano</span>, <span class="chip rojo">Con error</span> — y sus números.</li>
+  <li><b>Actualizar números</b>: consulta a Meta cómo rindió cada publicación viva. Las retiradas quedan a propósito en la lista: saber cuántas publicaciones necesitó un auto para venderse sirve para el próximo parecido.</li>
+</ul>
+
+<!-- CONOCIMIENTO -->
+<h2>4.9 Conocimiento</h2>
+<p>La memoria escrita de la empresa: trámites, precios, políticas. Reemplaza al cuaderno. NEXO la lee antes de contestarte por voz.</p>
+<ul>
+  <li><b>Buscar en el conocimiento…</b> por texto, y <b>Filtrar por categoría</b>: Trámites, Precios y tarifas, Políticas internas, Proveedores, Manuales, Otros.</li>
+  <li><b>Agregar</b>: <i>Título</i> (ej. «Costo de transferencia 0 km»), <i>Categoría</i>, <i>Contenido</i> (lo que se busca y lo que NEXO lee en voz alta) y <b>Adjuntar archivo</b> (PDF, imagen…). Pide confirmación.</li>
+  <li><b>Corregir</b> y <b>Borrar</b> en cada documento (el borrado pide confirmación).</li>
+  <li>Los archivos van a un depósito <b>privado</b>: se abren con un enlace firmado que vence a los cinco minutos y nadie de otra empresa los ve.</li>
+</ul>
+<div class="nota"><b class="t">Para arrancar</b>Empezá por lo que más te preguntan: costos de trámites, qué papeles pide cada compañía, cómo se toma un usado.</div>
+
+<!-- VOZ módulo -->
+<h2>4.10 Voz (el módulo)</h2>
+<p>Tiene dos pestañas:</p>
+<ul>
+  <li><b>Qué le puedo pedir</b>: la lista de todo lo que NEXO sabe hacer por voz, con un ejemplo de cada una, según los módulos y permisos de tu empresa. Todo trabaja sobre datos reales: si falta un dato, lo dice, no lo inventa.</li>
+  <li><b>Conversaciones</b>: las últimas 30 charlas con NEXO. Al abrir una se ve qué se dijo, qué herramientas usó y qué contestó cada una (en rojo si falló). Sirve sobre todo cuando la voz corta sola: en las que fallaron se muestra el motivo del corte. Hay un interruptor <b>Mostrarlo en pantalla mientras lo hace</b>.</li>
+</ul>
+
+<!-- VENTAS -->
+<h2>4.11 Ventas</h2>
+<p>Ayuda a no dejar a nadie sin respuesta y a escribir mejor los mensajes. Tiene tres partes:</p>
+<ul>
+  <li><b>Para contactar</b>: los clientes con el seguimiento atrasado o para hoy, los nuevos que nadie contactó («Se cargó hoy y nadie le escribió») y los que hace más de una semana que no hablan. Por cada uno: <b>Armar mensaje</b> (NEXO lo escribe con IA: revisalo antes de mandarlo), <b>Abrir WhatsApp</b> / <b>Abrir mail</b>, <b>Ya lo contacté</b> (queda en su historial y NEXO le pone la próxima fecha sola) y <b>Pasar a mañana</b>. Si no hay nadie: «Estás al día».</li>
+  <li><b>Asistente de ventas</b>: elegís <b>qué querés ofrecer</b> y <b>a quién</b> (por ejemplo «a un cliente típico») y el objetivo («que me dé 20 minutos…»). <b>Armar cómo venderlo</b> te devuelve el WhatsApp, el mail, un <b>Posteo para redes</b>, el <b>Guion de la llamada</b> y <b>Si te dice que no…</b> (cómo responder objeciones).</li>
+  <li><b>Lo que vendo</b>: el catálogo que usa el asistente (y Grupos y Marketplace). <b>Cargar lo que vendo</b> → <i>Nombre *</i>, <i>Qué incluye y qué problema resuelve</i> (cuanto más concreto, mejores mensajes), precio y <i>Moneda</i>. Cada ítem se puede <b>Editar</b>, pausar o borrar (con confirmación; no se puede deshacer).</li>
+</ul>
+
+<!-- ===================================================== 5 -->
+<h1>5. Dinero y números</h1>
+<div class="admin"><b class="t">Solo administradores en Alcover</b>En Alcover estos módulos están marcados como <b>solo para administradores</b>: ningún empleado los ve, aunque tenga «todos los módulos», y la base de datos también se lo impide (verificado el 14/10/2026: un vendedor no puede leer caja, costos ni auditoría ni siquiera preguntándole a NEXO por voz).</div>
+
+<h2>5.1 Caja</h2>
+<p>El día a día de ingresos y egresos.</p>
+<ul>
+  <li>Arriba, tres totales: <b>Ingresos</b>, <b>Egresos</b> y <b>Saldo</b>.</li>
+  <li>Para cargar: elegí <b>Ingreso</b> o <b>Egreso</b>, escribí el <b>Monto</b>, el <b>Concepto</b> (ej. «seña Ford Ka», «gestoría», «publicidad»), la <b>Forma de pago</b> y la fecha, y tocá <b>Registrar movimiento</b>.</li>
+  <li>Cada movimiento tiene <b>Corregir</b> (el mismo formulario edita; <b>Guardar corrección</b> deja lo anterior en la auditoría) y <b>Borrar movimiento</b> (con confirmación).</li>
+  <li>«Facturación y gastos» lleva a ese módulo cuando está habilitado. Los movimientos que vienen de una operación o de una compra muestran su origen.</li>
+</ul>
+
+<h2>5.2 Compras</h2>
+<p>Registra el <b>ingreso de stock</b> de un auto: de dónde vino, a quién se le compró y cuánto costó. Es lo que permite calcular el margen en Reportes.</p>
+<ul>
+  <li><b>Vehículo</b> (de la lista), <b>Proveedor</b> (de la lista), origen, <b>Costo</b>, <b>Gastos (acondicionamiento)</b>, fecha y <b>Notas (opcional)</b>. <b>Registrar ingreso de stock</b> guarda.</li>
+  <li>Alta rápida de proveedor sin salir: <b>Nombre del proveedor</b> → <b>Guardar proveedor</b>.</li>
+  <li><b>Corregir compra</b> y <b>Borrar compra</b> (con confirmación).</li>
+</ul>
+
+<h2>5.3 Reportes</h2>
+<p>Los números del negocio, en vivo desde las operaciones, vehículos y compras. Se muestran:</p>
+<ul>
+  <li><b>Ventas del mes</b> y cantidad de entregas.</li>
+  <li><b>Comisiones del mes</b>.</li>
+  <li><b>Margen del mes</b>: solo cuenta ventas cuyo vehículo tiene un costo cargado en Compras.</li>
+  <li><b>Stock valorizado</b>.</li>
+  <li><b>Operaciones en curso</b> (abiertas + señadas).</li>
+  <li><b>Ranking de vendedores</b>.</li>
+</ul>
+<p>Todavía no hay entregas este mes → aparece «Cuando marques operaciones como “entregada”, aparecen acá».</p>
+
+<h2>5.4 Facturación y gastos</h2>
+<p>Lo facturado y lo gastado en el mes, con el IVA discriminado, para el contador. <b>NEXO no emite facturas</b>: se registran las que ya se hicieron en ARCA.</p>
+<ul>
+  <li>Selector de <b>Mes</b> arriba. Totales: <b>Ventas del mes</b>, <b>Gastos del mes</b> y <b>Saldo de IVA (estimado)</b>, con el detalle de débito fiscal, crédito fiscal (compras con factura A), saldo técnico y percepciones de IVA e IIBB sufridas.</li>
+  <li><b>Ventas</b>: cada comprobante emitido. <b>Gastos</b>: cada factura recibida, con <b>Gastos por categoría</b> y <b>Gastos por pagar</b>. Los que se marcan pagados impactan en Caja.</li>
+  <li><b>Excel para el contador</b>: baja el resumen del mes listo para mandar.</li>
+</ul>
+
+<!-- ===================================================== 6 -->
+<h1>6. Manual del administrador</h1>
+<p>Todo lo que sigue es <span class="rol-a">solo para administradores</span> (el empleado no lo ve y la base de datos lo frena igual).</p>
+
+<h2>6.1 Administración: usuarios y permisos</h2>
+<p>La lista de las personas de la empresa. Cada una con su rol, su estado (verde = activo, rojo = dado de baja) y su último movimiento.</p>
+<h3>Crear un usuario</h3>
+<ol>
+  <li>Tocá el botón redondo <b>＋</b> («Nuevo usuario» aparece al pasar el cursor).</li>
+  <li>Escribí <b>Nombre</b>, <b>Email</b> y una <b>Contraseña</b> que cumpla la regla (8 a 16 caracteres con minúscula, mayúscula, número y símbolo; por ejemplo <b>Auto2026!</b>). Elegí el <b>Rol</b>: <i>Administrador</i> (ve costos internos y auditoría y puede crear usuarios) o <i>Empleado/Vendedor</i> (deja de ver los costos internos y la auditoría).</li>
+  <li><b>Crear usuario</b> y confirmá. Conviene que la persona cambie la contraseña en su primer ingreso (el sistema se lo pide si le diste una clave temporal).</li>
+</ol>
+<h3>Cambiar el rol</h3>
+<p>El selector de rol de cada fila lo cambia al instante, con confirmación. El sistema <b>no deja</b> sacar el rol al último administrador activo.</p>
+<h3>Permisos de un empleado</h3>
+<p>El botón <b>Permisos</b> abre la lista de módulos de la empresa:</p>
+<ul>
+  <li><b>Acceso a todos los módulos</b> (el valor por defecto de un usuario nuevo).</li>
+  <li>O tildar módulo por módulo. Hay <b>Plantillas</b> para no tildar uno a uno: <i>Vendedor</i>, <i>Administrativo</i>, <i>Gerente</i>.</li>
+  <li>Hay que dejarle al menos un módulo («o dalo de baja si ya no trabaja»). Caja, Compras, Stock y Facturación los frena también la base, y NEXO por voz respeta los mismos permisos. Los módulos «solo administradores» no se le dan a ningún empleado.</li>
+  <li><b>Guardar permisos</b> o <b>Cancelar</b>.</li>
+</ul>
+<h3>Ver como (vista previa)</h3>
+<p><b>Ver como</b> te deja ver NEXO exactamente como lo ve esa persona, con sus módulos y permisos, <b>sin poder guardar nada</b>. Arriba aparece una barra dorada «Estás viendo NEXO como …» con <b>Salir de la vista previa</b>. Es ideal para comprobar qué ve un empleado después de cambiarle los permisos.</p>
+<h3>Baja, reactivación y eliminación</h3>
+<ul>
+  <li><b>Dar de baja</b>: la persona deja de entrar y lo que cargó se conserva. Se puede <b>reactivar</b>. Es lo normal cuando alguien ya no trabaja.</li>
+  <li><b>Eliminar</b>: borra la cuenta de forma definitiva. No se puede deshacer, y si la persona tiene ventas, clientes o movimientos a su nombre el sistema no lo permite (hay que darla de baja).</li>
+  <li>En los dos casos se pide un <b>Motivo</b> obligatorio que queda en el historial para siempre.</li>
+  <li><b>Historial de bajas</b> (plegado, se abre con la flechita): quién dio de baja, reactivó o eliminó a quién, cuándo y por qué. Nadie puede editarlo ni borrarlo, ni siquiera un administrador.</li>
+</ul>
+<h3>Privacidad</h3>
+<p>Un recuadro con el enlace a la <b>política de privacidad pública</b> de la agencia: conviene ponerlo en la web, en el mensaje de bienvenida de WhatsApp y mandárselo a los clientes cuando se cargan sus datos. La casilla «cliente informado» de la ficha de cliente deja constancia.</p>
+
+<h2>6.2 Seguridad</h2>
+<p>El módulo <b>Seguridad</b> tiene tres partes:</p>
+<h3>Registro de auditoría</h3>
+<p>Lo escribe <b>la propia base de datos</b> con cada alta, cambio y baja, con lo que había antes y lo que quedó. No se puede editar ni borrar desde la aplicación, tampoco por un administrador.</p>
+<ul>
+  <li>Filtros: <b>Usuario</b>, <b>Módulo</b>, <b>Acción</b> (Altas, Cambios, Bajas) y fechas <i>desde / hasta</i>. Los filtros viajan a la base: se consulta de nuevo cada vez que cambian.</li>
+  <li>Las altas se ven en verde, los cambios en ámbar y las bajas en rojo. Los códigos internos se reemplazan por el nombre de la persona, el auto o el cliente cuando se puede.</li>
+  <li><b>Exportar a Excel</b> baja lo que se está viendo (hoja «Auditoría»).</li>
+  <li>Un empleado vería una lista vacía; por eso el módulo le avisa que solo es para administradores.</li>
+</ul>
+<h3>Accesos</h3>
+<p>Cada ingreso y cada salida hecha desde la pantalla de acceso, con la IP y el aparato; y «Último ingreso de cada uno». Si el navegador retoma una sesión ya iniciada no cuenta como ingreso nuevo. También se resume «Cuánto hizo cada uno en el período filtrado».</p>
+<h3>NEXO por voz</h3>
+<ul>
+  <li><b>Manos libres</b>: NEXO escucha «Hola NEXO» y arranca solo. Deja el micrófono abierto mientras tengas NEXO abierto. (Requiere Chrome.)</li>
+  <li><b>Aplauso doble</b>: aplaudí dos veces seguidas y NEXO te escucha. También deja el micrófono abierto.</li>
+  <li><b>Ver lo que consulta</b>: abre una ventana central con lo que NEXO busca en el sistema (stock, tareas, caja, clientes) y lo que encontró. La charla no se muestra.</li>
+  <li><b>Ver lo que hace</b>: lo mismo con lo que NEXO <i>cambia</i> (agregar una tarea, marcar un auto vendido, cargar caja) y si salió bien. Con los dos apagados no se abre ninguna ventana.</li>
+  <li><b>Color del núcleo</b>: se guarda en tu usuario y lo ves igual en la computadora, el celular y la app.</li>
+</ul>
+<p>En Alcover el módulo Seguridad es solo de administradores, así que estos ajustes de voz los configura un administrador en su propio usuario. Los empleados hablan con NEXO tocando el núcleo o el botón <b>Hablar con NEXO</b>.</p>
+
+<h2>6.3 Automatización</h2>
+<p>Lo que el sistema hace solo. Cada regla muestra <b>Se dispara</b> (cuándo corre), <b>Deja</b> (qué produce), su estado real (cuántas cosas hay esperando) y cuándo corrió por última vez. El estado real sale de contar contra las tablas del negocio, no de un campo guardado: si el proceso se colgara, el trabajo acumulado se vería igual.</p>
+<table class="tabla-ancha">
+  <tr><th>Regla</th><th>Qué hace</th></tr>
+  <tr><td>Publicar lo programado</td><td>Publica en Facebook e Instagram las publicaciones agendadas, a la hora que fijaste.</td></tr>
+  <tr><td>Retirar al vender</td><td>Cuando un auto pasa a vendido, retira sus publicaciones. Si alguna no se puede retirar sola (Instagram, TikTok, grupos), la deja en «Retirar a mano».</td></tr>
+  <tr><td>Seguimientos vencidos</td><td>Crea una tarea cuando un seguimiento de cliente pasó de fecha sin cumplirse. La tarea aparece en Tareas como cualquier otra.</td></tr>
+  <tr><td>Stock estancado</td><td>Avisa de los autos que llevan demasiado tiempo en stock. El campo <b>Avisar a partir de … días en stock</b> define cuánto (tiene que ser un número mayor que cero).</td></tr>
+  <tr><td>Refrescar números de redes</td><td>Actualiza solo los números de las publicaciones vivas.</td></tr>
+</table>
+<p>Encender o apagar una regla pide confirmación y <b>queda registrado en Seguridad</b>, con quién lo hizo y cuándo. Un empleado ve las reglas pero con los controles deshabilitados («Solo un administrador puede encender o apagar automatizaciones»).</p>
+
+<h2>6.4 Lo que solo ve el administrador en otros módulos</h2>
+<ul>
+  <li><b>Vehículos:</b> el <i>Costo interno</i> en el formulario y la ficha, y el <i>Dato de la consignación</i> en la ficha.</li>
+  <li><b>CRM:</b> el editor de etapas del recorrido (agregar, renombrar, reordenar, archivar).</li>
+  <li><b>Menú de cuenta:</b> encender o apagar <i>Voz de NEXO</i> para toda la empresa.</li>
+  <li><b>Verificación en dos pasos:</b> es obligatoria; si todavía no la activaste, el sistema te la pide al entrar.</li>
+  <li><b>No ve los botones de sol y luna</b>: el modo día/noche es solo para usuarios que no son administradores.</li>
+</ul>
+
+<h2>6.5 Buenas prácticas para administrar</h2>
+<ul>
+  <li>Dale a cada persona <b>su propio usuario</b>. No compartas claves: la auditoría necesita saber quién hizo cada cosa.</li>
+  <li>Cuando alguien se va, <b>dalo de baja el mismo día</b>.</li>
+  <li>Después de cambiar permisos, probá con <b>Ver como</b>.</li>
+  <li>Revisá la auditoría cuando algo no cierra: muestra lo que había antes y lo que quedó.</li>
+  <li>Mantené la verificación en dos pasos activa en todas las cuentas de administrador.</li>
+</ul>
+
+<!-- ===================================================== 7 -->
+<h1>7. Hablar con NEXO (voz)</h1>
+<p>NEXO entiende pedidos hablados y trabaja sobre datos reales: <b>si falta un dato lo dice, no lo inventa</b>, y respeta tus permisos (no te cuenta lo de un módulo que no podés abrir).</p>
+<h2>Cómo activarlo</h2>
+<ul>
+  <li>Tocá el <b>núcleo</b> del centro de la pantalla principal, o el botón <b>Hablar con NEXO</b> de la barra de arriba. La primera vez el navegador pide permiso para el micrófono. Para cortar: <b>Cortar la charla</b> o tocá otra vez el núcleo.</li>
+  <li>Los administradores pueden activar en Seguridad → NEXO por voz el modo <b>Hola NEXO</b> (manos libres) o el <b>aplauso doble</b>.</li>
+  <li>Si el botón no aparece, la voz está apagada para tu empresa: un administrador la prende desde el menú de la cuenta.</li>
+</ul>
+<h2>Qué se le puede pedir (con un ejemplo de cada uno)</h2>
+<h3>Consultar</h3>
+<table class="tabla-ancha">
+  <tr><td>Stock</td><td>«¿Qué Corollas tenemos?» · «¿Cómo está el Ka 2015?» · «¿Cuántos autos tenemos en consignación? ¿Cuáles están reservados?» · «¿Entró algún auto nuevo hoy? ¿Alguien retiró un auto de consignación?»</td></tr>
+  <tr><td>Financiación</td><td>«Simulame el Ka en 12 cuotas.» · «¿Cuánto sale transferir un auto de ocho millones?»</td></tr>
+  <tr><td>Conocimiento</td><td>«¿Qué papeles pide la compañía para una prenda?»</td></tr>
+  <tr><td>Clientes</td><td>«Contame de Martínez.» · «¿Qué hablamos con Juan Pérez?»</td></tr>
+  <tr><td>Día, caja y reportes</td><td>«¿Cómo venimos hoy?» · «¿Cómo está la caja?» · «Pasame el reporte del mes.»</td></tr>
+  <tr><td>Tareas y seguimientos</td><td>«¿Qué tengo pendiente?» · «¿A quién tengo que llamar hoy?»</td></tr>
+  <tr><td>Documentación</td><td>«¿Qué papeles le faltan al Ka?»</td></tr>
+  <tr><td>Auditoría</td><td>«¿Qué hizo Agustín hoy?» (solo administradores)</td></tr>
+  <tr><td>Clima</td><td>«¿Cómo está el clima en Salta?» · «¿Cómo va a estar el tiempo en Salta los próximos 10 días?»</td></tr>
+</table>
+<h3>Hacer cosas</h3>
+<table class="tabla-ancha">
+  <tr><td>Tareas</td><td>«Anotá para mañana: llamar al gestor.» · «Tachá la de llamar a Ricardo.» · «Pasá la de firmar el 08 para el lunes.»</td></tr>
+  <tr><td>Clientes y CRM</td><td>«Cargá a Laura Gómez, teléfono 387 555 1234.» · «Pasá a Laura a en negociación.» · «Recordame llamar a Laura el jueves.»</td></tr>
+  <tr><td>Vehículos</td><td>«Marcá el Ka como vendido.» · «Ponele ocho millones al Ka 2015.» · «El dueño del Gol retiró el auto.» · «Cargá un Onix 2020 con 50 mil kilómetros a 15 millones, en consignación.» · «Abrime la ficha del Corolla.»</td></tr>
+  <tr><td>Operaciones y caja</td><td>«Registrá la venta del Ka a Martínez por doce millones.» · «Pasá la operación de Martínez a cerrada.» · «Martínez dejó 500 mil más de seña.» · «Registrá un egreso de cincuenta mil por la grúa.»</td></tr>
+  <tr><td>Redes</td><td>«Publicá en Facebook: abrimos sábado hasta las 13.» · «Publicá el Ka en Instagram.»</td></tr>
+  <tr><td>Pantalla</td><td>«Abrime Caja.» · «Poné modo noche.»</td></tr>
+  <tr><td>Música</td><td>«Poné música de AC/DC.» · «Pausá la música.» · «Siguiente canción.»</td></tr>
+</table>
+<div class="nota"><b class="t">Para tener en cuenta</b>Los cambios que hace NEXO (precio, estado, tareas, caja…) quedan en la auditoría como cualquier otro. Si no entendió un dato (un precio, un año) te lo repregunta y <b>no cambia nada</b>. Para publicar en Instagram necesita una imagen: si pedís algo sin foto, te manda al módulo Redes.</div>
+
+<!-- ===================================================== 8 -->
+<h1>8. Quién ve qué en Alcover</h1>
+<table class="tabla-ancha">
+  <tr><th>Módulo / función</th><th>Empleado</th><th>Administrador</th></tr>
+  <tr><td>Vehículos (lista, ficha, alta, edición, fotos, checklist, devolver al dueño)</td><td>Sí (con permiso)</td><td>Sí</td></tr>
+  <tr><td>Costo interno y Dato de la consignación</td><td>No</td><td>Sí</td></tr>
+  <tr><td>Financiación, Clientes, CRM, Tareas, Operaciones</td><td>Sí (con permiso)</td><td>Sí</td></tr>
+  <tr><td>Editar etapas del CRM</td><td>No</td><td>Sí</td></tr>
+  <tr><td>Publicar (Redes, Grupos y Marketplace), Marketing, Conocimiento, Voz, Ventas</td><td>Sí (con permiso)</td><td>Sí</td></tr>
+  <tr><td>Caja, Compras, Reportes, Facturación y gastos</td><td><b>Nunca</b> (solo administradores)</td><td>Sí</td></tr>
+  <tr><td>Administración (usuarios, permisos, bajas, «Ver como»)</td><td>Nunca</td><td>Sí</td></tr>
+  <tr><td>Seguridad (auditoría, accesos, ajustes de voz)</td><td>Nunca</td><td>Sí</td></tr>
+  <tr><td>Automatización: ver reglas</td><td>Sí, solo lectura (con permiso)</td><td>Sí</td></tr>
+  <tr><td>Automatización: encender / apagar</td><td>No</td><td>Sí</td></tr>
+  <tr><td>Encender / apagar la voz de NEXO de la empresa</td><td>No</td><td>Sí</td></tr>
+  <tr><td>Modo día / noche (☀ 🌙) en la barra</td><td>Sí</td><td>No</td></tr>
+  <tr><td>Verificación en dos pasos</td><td>Recomendada</td><td>Obligatoria (sin el código no ve ningún dato)</td></tr>
+</table>
+<p>«Con permiso» significa que el administrador le habilitó ese módulo (o que tiene «Acceso a todos los módulos»). Lo marcado <b>Nunca</b> no se le puede dar a un empleado.</p>
+
+<!-- ===================================================== 9 -->
+<h1>9. Novedades de octubre de 2026</h1>
+<table class="tabla-ancha">
+  <tr><th>Qué cambió</th><th>Qué significa para vos</th></tr>
+  <tr><td>Contraseñas más seguras</td><td>Toda contraseña nueva o cambiada lleva minúscula, mayúscula, número y símbolo (ej. <b>Auto2026!</b>). Las actuales siguen sirviendo. Las claves temporales que da NEXO ya cumplen la regla (ej. <i>Kx7m-Qr4p-2Rtw</i>).</td></tr>
+  <tr><td>Lista de precios conectada</td><td>NEXO toma de la Lista el precio, el vendedor que ingresó el auto, motor, caja, tracción, condición y transferencia. La planilla del sitio aporta solo fotos y anticipo. El estado de los autos lo sigue manejando NEXO.</td></tr>
+  <tr><td>Autos que faltaban</td><td>Se cargaron 12 autos que estaban en la Lista y no en NEXO, con los datos de la Lista. El Duster Confort Plus 2014 (NNQ674) quedó <b>sin precio</b> porque la Lista no lo tiene.</td></tr>
+  <tr><td>Colores del estado</td><td>Verde disponible, celeste a la venta fuera de la agencia, ámbar reservado, rojo vendido o no disponible.</td></tr>
+  <tr><td>«Auto fuera de la agencia pero sigue a la venta»</td><td>Casilla en el formulario y en la checklist del auto: queda disponible y se ve en celeste.</td></tr>
+  <tr><td>«Devolver al dueño»</td><td>Al lado de Editar, en todo auto en consignación que está en la agencia.</td></tr>
+  <tr><td>Lista de Vehículos en columnas</td><td>Vehículo, Km, Condición, Patente, Estado, Precio, Anticipo y Acciones; filtros en una ventana centrada.</td></tr>
+  <tr><td>Fotos desde el celular</td><td>Al cargar un auto nuevo se pueden elegir fotos de la galería o sacarlas con la cámara.</td></tr>
+  <tr><td>Sol y luna</td><td>Los empleados eligen modo día o noche desde la barra de arriba.</td></tr>
+  <tr><td>Dos pasos en redes</td><td>Retirar publicaciones y actualizar números de redes también piden el código de dos pasos a quien lo tiene activado.</td></tr>
+  <tr><td>Dirección única</td><td>NEXO se usa solo en <b>jarvis-acv.vercel.app</b>; la versión vieja ya no está publicada.</td></tr>
+</table>
+
+<!-- ===================================================== 10 -->
+<h1>10. Problemas frecuentes y glosario</h1>
+<h2>Si algo no funciona</h2>
+<table class="tabla-ancha">
+  <tr><th>Qué pasa</th><th>Qué hacer</th></tr>
+  <tr><td>No veo un módulo</td><td>Tu administrador no te lo habilitó, o es de los que en Alcover son solo para administradores (Caja, Compras, Reportes, Facturación, Administración, Seguridad). Pedíselo; puede revisarlo con «Ver como».</td></tr>
+  <tr><td>No me deja guardar la contraseña nueva</td><td>Le falta algo de la regla: minúscula, mayúscula, número o símbolo, o tiene menos de 8 o más de 16 caracteres. El mensaje dice qué falta.</td></tr>
+  <tr><td>«Tu sesión venció. Volvé a iniciar sesión.»</td><td>Cerrá sesión y entrá de nuevo.</td></tr>
+  <tr><td>No aparece «Hablar con NEXO»</td><td>La voz está apagada para la empresa: un administrador la prende desde el menú de la cuenta.</td></tr>
+  <tr><td>NEXO no me escucha</td><td>Revisá el permiso del micrófono del navegador. «Hola NEXO» y el aplauso funcionan mejor en Chrome.</td></tr>
+  <tr><td>Un auto no tiene fotos o precio como en la web</td><td>Las fotos y el anticipo vienen de la planilla del sitio y los precios de la Lista de precios (si está conectada); esas fuentes mandan sobre lo que cargues a mano. Se sincronizan cada 15 minutos.</td></tr>
+  <tr><td>Vendí un auto y sigue publicado</td><td>Facebook se retira solo. Instagram, TikTok y los grupos no se pueden borrar por sistema: están en «Retirar a mano», «Ya la borré» y «Ya lo saqué».</td></tr>
+  <tr><td>Los cambios en la pantalla no se ven</td><td>Refrescá con <kbd>Ctrl</kbd>+<kbd>F5</kbd> (en el celular, cerrá y abrí la app).</td></tr>
+  <tr><td>Un botón dice «No se pudo…»</td><td>Se muestra el motivo real. Si es de permisos, avisá al administrador; si es un error de conexión, probá de nuevo.</td></tr>
+</table>
+<h2>Glosario</h2>
+<table class="tabla-ancha">
+  <tr><td>Consignación</td><td>Auto de un particular que la agencia vende en su nombre.</td></tr>
+  <tr><td>DNRPA / valor tabla</td><td>Registro oficial de autos; el valor tabla es la base para calcular el arancel de transferencia.</td></tr>
+  <tr><td>Gestoría</td><td>Costo del trámite de transferencia (se cobra una sola vez).</td></tr>
+  <tr><td>Prenda</td><td>Garantía que queda sobre un auto financiado.</td></tr>
+  <tr><td>Anticipo</td><td>Dinero que hay que dar para retirar el auto.</td></tr>
+  <tr><td>Lead</td><td>Persona interesada que todavía no compró.</td></tr>
+  <tr><td>RTV / «revesa»</td><td>Revisación técnica vehicular.</td></tr>
+  <tr><td>Auditoría</td><td>Registro automático e inalterable de quién cambió qué y cuándo.</td></tr>
+  </table>
+<div class="nota"><b class="t">¿Falta algo?</b>Este manual describe el sistema tal como está hoy. Cuando se agregue un módulo o un botón nuevo, se actualiza la edición.</div>
+
+</body>
+</html>
